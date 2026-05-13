@@ -3,6 +3,7 @@
   "displayName": "FHIR Profile Language",
   "description": "Syntax highlighting for FHIR Profile Language (.fpl)",
   "version": "0.0.1",
+  "license": "MIT",
   "publisher": "meddyg",
   "repository": {
     "type": "git",

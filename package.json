@@ -1,0 +1,35 @@
+{
+  "name": "fpl-language",
+  "displayName": "FHIR Profile Language",
+  "description": "Syntax highlighting for FHIR Profile Language (.fpl)",
+  "version": "0.0.1",
+  "publisher": "meddyg",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "fpl",
+        "aliases": [
+          "FHIR Profile Language",
+          "FPL"
+        ],
+        "extensions": [
+          ".fpl"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "fpl",
+        "scopeName": "source.fpl",
+        "path": "./syntaxes/fpl.tmLanguage.json"
+      }
+    ]
+  }
+}

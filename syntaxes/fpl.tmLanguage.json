@@ -1,0 +1,131 @@
+{
+  "scopeName": "source.fpl",
+  "name": "FHIR Profile Language",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#declarations"
+    },
+    {
+      "include": "#properties"
+    },
+    {
+      "include": "#cardinality"
+    },
+    {
+      "include": "#codes"
+    },
+    {
+      "include": "#paths"
+    },
+    {
+      "include": "#constants"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.fpl",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.fpl",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.fpl",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.fpl",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.fpl",
+          "match": "\\b(namespace|profile|extension|abstraction|valueset|codesystem|instance|ruleset|element|use|extends|for|of|from|to|only|bind|fixed|pattern|require|support)\\b"
+        },
+        {
+          "name": "keyword.other.binding-strength.fpl",
+          "match": "\\b(required|preferred|extensible|example)\\b"
+        }
+      ]
+    },
+    "declarations": {
+      "patterns": [
+        {
+          "name": "entity.name.type.fpl",
+          "match": "(?<=\\b(profile|extension|abstraction|valueset|codesystem|instance|ruleset)\\s+)[A-Za-z_][A-Za-z0-9_]*"
+        },
+        {
+          "name": "entity.other.inherited-class.fpl",
+          "match": "(?<=\\bextends\\s+)[A-Za-z_][A-Za-z0-9_]*"
+        }
+      ]
+    },
+    "properties": {
+      "patterns": [
+        {
+          "name": "support.type.property-name.fpl",
+          "match": "\\b(id|title|description|cardinality|short|definition|must-support|context|value|system|code|display|unit-system|unit-code|fixed-code)\\b(?=\\s*:)"
+        }
+      ]
+    },
+    "cardinality": {
+      "patterns": [
+        {
+          "name": "constant.numeric.cardinality.fpl",
+          "match": "\\b[0-9]+\\.\\.(\\*|[0-9]+)\\b"
+        }
+      ]
+    },
+    "codes": {
+      "patterns": [
+        {
+          "name": "constant.language.code.fpl",
+          "match": "#[A-Za-z0-9_.\\-]+"
+        },
+        {
+          "name": "constant.other.system-code.fpl",
+          "match": "\\b[A-Za-z][A-Za-z0-9_.\\-]*#[A-Za-z0-9_.\\-%]+\\b"
+        }
+      ]
+    },
+    "paths": {
+      "patterns": [
+        {
+          "name": "variable.other.fhirpath.fpl",
+          "match": "\\b[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z][A-Za-z0-9_]*|\\[x\\])*\\b(?=\\s*\\{)"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.fpl",
+          "match": "\\b(true|false)\\b"
+        }
+      ]
+    }
+  }
+}

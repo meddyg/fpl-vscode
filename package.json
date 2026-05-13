@@ -4,6 +4,10 @@
   "description": "Syntax highlighting for FHIR Profile Language (.fpl)",
   "version": "0.0.1",
   "publisher": "meddyg",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meddyg/fpl-vscode.git"
+  },
   "engines": {
     "vscode": "^1.90.0"
   },

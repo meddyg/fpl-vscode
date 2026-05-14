@@ -5,15 +5,16 @@ Syntax highlighting support for FHIR Profile Language files in Visual Studio Cod
 ## Features
 
 - Language registration for .fpl files (language id: fpl)
-- Highlighting for FPL keywords such as namespace, profile, extension, abstraction, valueset, codesystem, instance, ruleset, element, extends, bind, fixed, and pattern
+- Highlighting for FPL keywords such as using, use, namespace, profile, extension, abstraction, valueset, codesystem, instance, ruleset, element, extends, for, of, from, to, only, bind, fixed, pattern, require, support, invariant, and obeys
 - Highlighting for binding strengths: required, preferred, extensible, and example
 - Highlighting for declarations after profile-like statements and extends clauses
+- Highlighting for invariant declarations and obeys references
 - Highlighting for common property names before colon fields
 - Cardinality highlighting for patterns such as 0..1, 1..1, and 0..*
 - Code token highlighting for #code and system#code forms
 - FHIR path-like token highlighting before block openings
 - Boolean constant highlighting for true and false
-- Support for line comments, block comments, strings, and bracket auto-closing
+- Support for line comments, block comments, strings, bracket auto-closing, and region folding markers (#region/#endregion)
 
 ## Requirements
 

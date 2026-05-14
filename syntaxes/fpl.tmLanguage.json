@@ -9,6 +9,15 @@
       "include": "#strings"
     },
     {
+      "include": "#relativeElementPaths"
+    },
+    {
+      "include": "#elementPaths"
+    },
+    {
+      "include": "#invariants"
+    },
+    {
       "include": "#keywords"
     },
     {
@@ -31,6 +40,68 @@
     }
   ],
   "repository": {
+    "invariants": {
+      "patterns": [
+        {
+          "name": "meta.invariant-declaration.fpl",
+          "match": "\\b(invariant)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.invariant.fpl"
+            },
+            "2": {
+              "name": "entity.name.invariant.fpl"
+            }
+          }
+        },
+        {
+          "name": "meta.obeys-colon.fpl",
+          "match": "\\b(obeys)\\s*(:)\\s*([A-Za-z_][A-Za-z0-9_\\-]*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.obeys.fpl"
+            },
+            "2": {
+              "name": "punctuation.separator.colon.fpl"
+            },
+            "3": {
+              "name": "entity.name.invariant.reference.fpl"
+            }
+          }
+        },
+        {
+          "name": "meta.obeys-inline.fpl",
+          "match": "\\b(obeys)\\s+([A-Za-z_][A-Za-z0-9_\\-]*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.obeys.fpl"
+            },
+            "2": {
+              "name": "entity.name.invariant.reference.fpl"
+            }
+          }
+        }
+      ]
+    },
+    "relativeElementPaths": {
+      "patterns": [
+        {
+          "name": "meta.relative-element-declaration.fpl",
+          "match": "(\\$this|\\bthis)\\s*(\\.)\\s*([A-Za-z][A-Za-z0-9_]*(?:(?:\\.[A-Za-z][A-Za-z0-9_]*)|(?:\\[[A-Za-z0-9_.\\-]+\\])|(?:\\[x\\]))*)\\s*(?=\\{)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.relative-this.fpl"
+            },
+            "2": {
+              "name": "punctuation.accessor.dot.fpl"
+            },
+            "3": {
+              "name": "entity.name.fhir-element.fpl"
+            }
+          }
+        }
+      ]
+    },
     "comments": {
       "patterns": [
         {
@@ -59,11 +130,27 @@
         }
       ]
     },
+    "elementPaths": {
+      "patterns": [
+        {
+          "name": "meta.element-declaration.fpl",
+          "match": "\\b(element)\\s+([A-Za-z][A-Za-z0-9_]*(?:(?:\\.[A-Za-z][A-Za-z0-9_]*)|(?:\\[[A-Za-z0-9_.\\-]+\\])|(?:\\[x\\]))*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.element.fpl"
+            },
+            "2": {
+              "name": "entity.name.fhir-element.fpl"
+            }
+          }
+        }
+      ]
+    },
     "keywords": {
       "patterns": [
         {
           "name": "keyword.control.fpl",
-          "match": "\\b(namespace|profile|extension|abstraction|valueset|codesystem|instance|ruleset|element|use|extends|for|of|from|to|only|bind|fixed|pattern|require|support)\\b"
+          "match": "\\b(using|namespace|profile|extension|abstraction|valueset|codesystem|instance|ruleset|element|use|extends|for|of|from|to|only|bind|fixed|pattern|require|support|invariant|obeys)\\b"
         },
         {
           "name": "keyword.other.binding-strength.fpl",
@@ -75,7 +162,7 @@
       "patterns": [
         {
           "name": "entity.name.type.fpl",
-          "match": "(?<=\\b(profile|extension|abstraction|valueset|codesystem|instance|ruleset)\\s+)[A-Za-z_][A-Za-z0-9_]*"
+          "match": "(?<=\\b(using|profile|extension|abstraction|valueset|codesystem|instance|ruleset)\\s+)[A-Za-z_][A-Za-z0-9_]*"
         },
         {
           "name": "entity.other.inherited-class.fpl",
@@ -108,6 +195,10 @@
         {
           "name": "constant.other.system-code.fpl",
           "match": "\\b[A-Za-z][A-Za-z0-9_.\\-]*#[A-Za-z0-9_.\\-%]+\\b"
+        },
+        {
+          "name": "constant.other.fhir-code.fpl",
+          "match": "#[A-Za-z0-9_.\\-%]+"
         }
       ]
     },
